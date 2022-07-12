@@ -18,7 +18,7 @@ const Details = (props: IDetailsProps) => {
 	useEffect(() => {
 		const readBookContent = async () => {
 			try{
-				const bookContent = await FileSystem.readFile(`${Dirs.DocumentDir}/Books/${title}`);
+				const bookContent = await FileSystem.readFile(`${Dirs.DocumentDir}/${title}`);
 				setContent(bookContent);
 			} catch(e) {
 				setError('Error reading book content');

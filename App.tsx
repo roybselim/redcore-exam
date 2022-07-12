@@ -14,7 +14,13 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Books">
         <Stack.Screen name="Books" component={Home} />
-        <Stack.Screen name="Content" component={Details} />
+        <Stack.Screen 
+          name="Content" 
+          component={Details} 
+          options={({route: {params}}: any) => ({
+            headerTitle: params?.title.split('/')[1].split('.')[0]
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
