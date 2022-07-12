@@ -109,7 +109,7 @@ const Home = () => {
                 >
                     <View style={styles.pickButton}>
                         <Text style={styles.btnTitle}>
-                            {`Pick the book from any folder.`}
+                            {`Pick a book from any folder.`}
                         </Text>
                     </View>
                 </TouchableOpacity>
