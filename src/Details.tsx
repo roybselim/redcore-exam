@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet, View } from 'react-native';
 import { Dirs, FileSystem } from 'react-native-file-access';
 
 interface IDetailsProps {
@@ -18,7 +18,7 @@ const Details = (props: IDetailsProps) => {
 	useEffect(() => {
 		const readBookContent = async () => {
 			try{
-				const bookContent = await FileSystem.readFile(`${Dirs.DocumentDir}/Books/${title}`);
+				const bookContent = await FileSystem.readFile(`${Dirs.DocumentDir}/${title}`);
 				setContent(bookContent);
 			} catch(e) {
 				setError('Error reading book content');
@@ -27,6 +27,12 @@ const Details = (props: IDetailsProps) => {
 
 		readBookContent();
 	}, [])
+
+	if(error) {
+		return (
+			<View><Text>{error}</Text></View>
+		)
+	}
 
   return (
     <ScrollView style={styles.detailsContainer}>
