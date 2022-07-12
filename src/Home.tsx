@@ -75,6 +75,12 @@ const Home = () => {
         })
     }
 
+	if(error) {
+		return (
+			<View><Text>{error}</Text></View>
+		)
+	}
+
     return (
         <SafeAreaView style={styles.fullHeight}>
             <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />

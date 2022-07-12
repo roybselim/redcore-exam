@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet, View } from 'react-native';
 import { Dirs, FileSystem } from 'react-native-file-access';
 
 interface IDetailsProps {
@@ -27,6 +27,12 @@ const Details = (props: IDetailsProps) => {
 
 		readBookContent();
 	}, [])
+
+	if(error) {
+		return (
+			<View><Text>{error}</Text></View>
+		)
+	}
 
   return (
     <ScrollView style={styles.detailsContainer}>
