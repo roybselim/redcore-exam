@@ -24,7 +24,7 @@ function App() {
           component={Content} 
           options={({route: {params}}) => ({
             headerTitle: params.title.split('/')[1].split('.')[0],
-            headerRight: () => <ThreeDotsMenu params={params}/>
+            headerRight: () => <ThreeDotsMenu title={params.title}/>
           })}
         />
       </Stack.Navigator>

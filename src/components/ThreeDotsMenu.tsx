@@ -10,13 +10,11 @@ const options = [
 ]
 
 interface IThreeDotsMenuProps {
-  params: {
-    title: string;
-  }
+  title: string;
 }
 
 const ThreeDotsMenu = (props: IThreeDotsMenuProps) => {
-  const {title} = props.params;
+  const {title} = props;
   const actionSheetRef = useRef<any>();
   const navigation = useNavigation<any>();
 
