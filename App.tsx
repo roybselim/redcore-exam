@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Books from './src/Books';
 import Content from './src/Content';
+import ThreeDotsMenu from './src/components/ThreeDotsMenu';
 
 export type RootStackParamList = {
   Books: undefined;
@@ -22,7 +23,8 @@ function App() {
           name="Content" 
           component={Content} 
           options={({route: {params}}) => ({
-            headerTitle: params.title.split('/')[1].split('.')[0]
+            headerTitle: params.title.split('/')[1].split('.')[0],
+            headerRight: () => <ThreeDotsMenu params={params}/>
           })}
         />
       </Stack.Navigator>

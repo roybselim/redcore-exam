@@ -1,6 +1,6 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 import { Dirs, FileSystem } from 'react-native-file-access';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { useNavigation, NavigationProp, useFocusEffect } from '@react-navigation/native';
 import DocumentPicker from 'react-native-document-picker';
 import { RootStackParamList } from '../App';
 
@@ -39,17 +39,19 @@ const Books = () => {
 		};
 	}, []);
 
-	useEffect(() => {
-		const listFilesInBooksDir = async () => {
-			try{
-				await listBooks();
-			} catch(e){
-				setError('Error checking for books');
+	useFocusEffect(
+		useCallback(() => {
+			const listFilesInBooksDir = async () => {
+				try{
+					await listBooks();
+				} catch(e){
+					setError('Error checking for books');
+				}
 			}
-		}
-		
-		listFilesInBooksDir()
-	}, [appStateVisible])
+			
+			listFilesInBooksDir()
+		}, [appStateVisible])
+	)
 
 	const listBooks =  async (): Promise<void> => {
 		const bookFolders = await FileSystem.ls(Dirs.DocumentDir);
