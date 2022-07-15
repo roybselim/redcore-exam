@@ -10,7 +10,7 @@ interface IDetailsProps {
 	}
 }
 
-const Details = (props: IDetailsProps) => {
+const Content = (props: IDetailsProps) => {
 	const {params: {title}} = props.route;
 	const [content, setContent] = useState<string>('');
 	const [error, setError] = useState<string>('');
@@ -43,10 +43,10 @@ const Details = (props: IDetailsProps) => {
   )
 }
 
+export default Content;
+
 const styles = StyleSheet.create({
   detailsContainer: {
     margin: 15,
   }
 });
-
-export default Details;
