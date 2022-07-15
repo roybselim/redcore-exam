@@ -75,7 +75,9 @@ const Books = () => {
 			const folderName = destructuredPath?.pop();
 			setBooks([...books, `${folderName}/${fileName}`]);
 		}).catch((error) => {
-			setError('Error picking a document')
+			if(!DocumentPicker.isCancel(error)){
+				setError('Error picking a document')
+			}
 		})
 	}
 
