@@ -1,24 +1,28 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from './src/Home';
-import Details from './src/Details';
+import Books from './src/Books';
+import Content from './src/Content';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Books: undefined;
+  Content: { title: string };
+}
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Books">
-        <Stack.Screen name="Books" component={Home} />
+        <Stack.Screen name="Books" component={Books} />
         <Stack.Screen 
           name="Content" 
-          component={Details} 
-          options={({route: {params}}: any) => ({
-            headerTitle: params?.title.split('/')[1].split('.')[0]
+          component={Content} 
+          options={({route: {params}}) => ({
+            headerTitle: params.title.split('/')[1].split('.')[0]
           })}
         />
       </Stack.Navigator>
